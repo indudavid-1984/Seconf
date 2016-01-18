@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Tests" verbose="5" data-provider-thread-count="1" >
+<parameter name="path" value="/"/>
+<test name="Test1">
+
+
+<groups>
+
+<define name="System Test">
+
+ <include name="Smoke"/>
+ <include name="Integration"/>
+ </define>
+ <define name = "End to end">
+ <include name="Functional"/>
+ 
+</define>
+<run><include name="System Test"/>
+ <exclude name="Smoke"></exclude>
+<include name="End to end"/>
+
+
+
+
+
+</run>
+</groups>
+
+		
+		<classes>
+		<class name="org.tests.pages.TestBase"/>
+		    <class name="org.tests.pages.HomePageTest1"/> 
+		    
+		<class name="org.tests.pages.GmailAttachTest"/> 
+		    <class name="org.tests.pages.ProductEditionsTest"/> 
+		    <class name="org.tests.pages.PartnersPageTest"/>
+		    <class name="org.tests.pages.ClinicalConductorPageTest"/>
+		    <class name="org.tests.pages.SearchPageTest"/> 
+		   
+		   
+		   
+		    
+		</classes>
+	</test>
+	
+	</suite>
