@@ -20,7 +20,7 @@ public class ClinicalConductorPage extends Page {
 	
 	@FindBy(how = How.LINK_TEXT, using = requestDemo )
 	@CacheLookup
-	private WebElement RequestDem;
+	private WebElement RequestDemo;
 	
 	public String RequestLink (){
 		return RequestDemo.getTextnow;
