@@ -23,7 +23,8 @@ public class ClinicalConductorPage extends Page {
 	private WebElement RequestDemo;
 	
 	public String RequestLink (){
-		return RequestDemo.getTex;
+		return RequestDemo.getText changed
+				;
 	}
 	
 }
