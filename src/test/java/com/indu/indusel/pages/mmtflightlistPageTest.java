@@ -61,7 +61,7 @@ public class mmtflightlistPageTest extends TestBase {
 	@Test
 	public void rewardsTest( String flight){
 		
-	try {	mmtflightlistPage.Rewards().depradio(flight);
+	try {	mmtflightlistPage.Rewards();//depradio(flight);
 		
 		Set<String> a = webDriver.getWindowHandles();
 		for (String i : a){
