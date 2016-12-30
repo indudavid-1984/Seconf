@@ -43,7 +43,7 @@ public class mmtflightlistPageTest extends TestBase {
 	}
 
 	
-	@Test(dataProvider = "test", dataProviderClass= excelreader.class, groups = "A")
+	/*@Test(dataProvider = "test", dataProviderClass= excelreader.class, groups = "A")
 	
 	public void testflightbook( String A, String B,float day, float month, float year, float nofp,  String f1, String f2) throws InterruptedException, NoSuchElementException {
 		System.out.println("-----inside testflightbook---");//
@@ -78,5 +78,19 @@ public class mmtflightlistPageTest extends TestBase {
 	
 }
 	
+	} */
+	
+	@Test
+	public void trainsTest( ){
+		
+		String s= webDriver.getCurrentUrl();
+		mmtflightlistPage.trainsClick();
+		String s2 = webDriver.getCurrentUrl();
+		webDriver.navigate().back();
+		 String s3 = webDriver.getCurrentUrl();
+		Assert.assertEquals(s, s3) ;
+		
+		 
+		
 	}
 }

@@ -27,11 +27,17 @@ public class mmtflightlistPage extends WebDriverWrapper {
 	
 	private final String Btn ="";//Rewards page
 	
+	private final String trains = "rail_pic";
+	
 	private final String Dates = ".//*[@id='dp1479608859978']/div/div[1]/table/tbody/tr[2]";
 	
 	@FindBy(how =How.XPATH, using = FromList)
 	@CacheLookup
 	private List<WebElement> A;
+	
+	@FindBy(how =How.CLASS_NAME, using = trains)
+	@CacheLookup
+	private WebElement train;
 	
 	@FindBy(how =How.XPATH, using = Fromfield)
 	@CacheLookup
@@ -81,6 +87,11 @@ public class mmtflightlistPage extends WebDriverWrapper {
 	@FindBy(how = How.XPATH, using = Dates)
 	@CacheLookup
 	private List<WebElement> dates1;
+	
+	public void trainsClick(){
+		
+		train.click();
+	}
 	
 	
 	public void SelectPass (float NoP1) {
