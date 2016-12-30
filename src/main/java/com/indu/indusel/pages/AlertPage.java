@@ -11,7 +11,7 @@ import com.indu.indusel.pages.*;
 
 public class AlertPage extends WebDriverWrapper {
 
-	private final String H2_TAG = "h2 ";//co mment git2
+	private final String H2_TAG = "h2 ";//
 	private final String name= "uid";
 	private final String password = "password";
 	
