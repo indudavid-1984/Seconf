@@ -6,8 +6,8 @@
 	<test name="Test1">
 		<parameter name="path" value="/"/>
 		<classes>
-		    <class name="com.indu.indusel.pages.mmtflightlistPageTest"/>
-		    <class name="com.indu.indusel.pages.mmthomepageTest"/>
+		    <class name="com.indu.indusel.pages.EmiratesHotelPageTest"/>
+		    
 		</classes>
 	</test>  
 </suite>

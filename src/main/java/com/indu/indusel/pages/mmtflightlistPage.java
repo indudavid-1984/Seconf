@@ -1,6 +1,9 @@
 package com.indu.indusel.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -21,9 +24,9 @@ public class mmtflightlistPage extends WebDriverWrapper {
 	private final String month ="";
 	private final String day="";
 	private final String search ="";
-	private final String FromList = ".//*[@id='ui-id-1']/li";
+	private final String FromList = "//ul[contains(@class, 'from_city_list top_cities_list')]/li";
 	
-	private final String Fromfield = ".//*[@id='hp-widget__sfrom']";
+	private final String Fromfield = "//input[@id='from_typeahead1']";
 	
 	private final String Btn ="";//Rewards page
 	
@@ -55,8 +58,8 @@ public class mmtflightlistPage extends WebDriverWrapper {
 	@CacheLookup
 	private WebElement Next;
 	
-	@FindBy(how =How.LINK_TEXT , using = Prev_text)
-	@CacheLookup
+	//@FindBy(how =How.LINK_TEXT , using = Prev_text)
+	//@CacheLookup
 	private WebElement Prev;
 	
 	@FindBy(how = How.XPATH, using = Num)
@@ -88,6 +91,11 @@ public class mmtflightlistPage extends WebDriverWrapper {
 	@CacheLookup
 	private List<WebElement> dates1;
 	
+	
+/*	public mmtflightlistPage(WebDriver webDriver) {
+		super(webDriver);
+	} */
+	
 	public void trainsClick(){
 		
 		train.click();
@@ -103,15 +111,20 @@ public class mmtflightlistPage extends WebDriverWrapper {
 		
 	public void SelectFrom (String from){
 		int i =0;
+		FromField.clear();
 		FromField.click();
-		
-	while (A.iterator().hasNext()){
-		if (A.get(i).getAttribute("aria-label") == from) {
-			A.get(i).click();
+		Iterator<WebElement> itr = A.iterator();
+	while (itr.hasNext()){
+	
+		System.out.println("text :" + itr.next().getAttribute("id"));
+		if (itr.next().getAttribute("id").equalsIgnoreCase("BOM|Y|Mumbai|India")) {
+			System.out.println("inside if");
+			itr.next().click();
+		}
 		}
 	}
 		
-	}
+	
 	
 	public void SelectTo (String To1){
 		
@@ -148,11 +161,14 @@ public mmthomepage search()
 	return new mmthomepage();
 }
 
-public String finalflight()
-{
-	return month1.getText();
-}
-}
+public void finalflight()
+{ findElement(getDriver(),By.className("rail_pic"), 0).click();
+
+
 	
+
+//return month1.getText();
+}
+}
 	
 	

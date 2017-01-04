@@ -33,6 +33,16 @@
 			<version>2.48.2</version>
 		</dependency>
 		<dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+		<dependency>
 			<groupId>io.selendroid</groupId>
 			<version>0.16.0</version>
 			<artifactId>selendroid-standalone</artifactId>

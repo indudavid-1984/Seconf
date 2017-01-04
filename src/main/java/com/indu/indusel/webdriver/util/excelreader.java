@@ -28,7 +28,7 @@ public class excelreader {
 	    	 {System.out.println("inside excel dataprovider");
 	    	    Object [][]a = new Object [1][8];
 	      
-	             FileInputStream file = new FileInputStream(new File("D://Git//indusel//src//main//resources//DataExcel.xlsx"));
+	             FileInputStream file = new FileInputStream(new File("D://Git//src//main//resources//DataExcel.xlsx"));
 	  
 	             //Create Workbook instance holding reference to .xlsx file
 	             XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -55,7 +55,7 @@ public class excelreader {
 	                     {
 	                         case Cell.CELL_TYPE_NUMERIC:
 	                             System.out.print(cell.getNumericCellValue() + "t");
-	                             a[i][j]=cell.getNumericCellValue();
+	                             a[i][j]=(int)cell.getNumericCellValue();
 	                             break;
 	                         case Cell.CELL_TYPE_STRING:
 	                             System.out.print(cell.getStringCellValue() + "t" +i +j +"lll");

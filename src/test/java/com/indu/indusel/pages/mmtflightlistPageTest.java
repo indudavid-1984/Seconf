@@ -43,21 +43,24 @@ public class mmtflightlistPageTest extends TestBase {
 	}
 
 	
-	/*@Test(dataProvider = "test", dataProviderClass= excelreader.class, groups = "A")
+	@Test(dataProvider = "test", dataProviderClass= excelreader.class, groups = "A")
 	
 	public void testflightbook( String A, String B,float day, float month, float year, float nofp,  String f1, String f2) throws InterruptedException, NoSuchElementException {
 		System.out.println("-----inside testflightbook---");//
 		mmtflightlistPage.SelectFrom(A);
-		mmtflightlistPage.SelectTo(B);
-		mmtflightlistPage.Dateselect(day, month, year).SelectPass(nofp);
-		mmtflightlistPage.search().depradio(f1);
+		//findElement(webDriver,By.xpath("l"), 0);
+	//	mmtflightlistPage.SelectTo(B);
+	//	mmtflightlistPage.Dateselect(day, month, year).SelectPass(nofp);
+	//	mmtflightlistPage.search().depradio(f1);
+	//	
+	//	mmthomepage.Fromradio(f2);
+		mmtflightlistPage.finalflight();
 		
-		mmthomepage.Fromradio(f2);
-		
-		s_asert.assertEquals(mmtflightlistPage.finalflight(), f1);
+	//	s_asert.assertEquals(mmtflightlistPage.finalflight(), f1);
 		
 	}
 	
+	/*
 	@Test
 	public void rewardsTest( String flight){
 		
@@ -78,7 +81,7 @@ public class mmtflightlistPageTest extends TestBase {
 	
 }
 	
-	} */
+	} 
 	
 	@Test
 	public void trainsTest( ){
@@ -92,5 +95,5 @@ public class mmtflightlistPageTest extends TestBase {
 		
 		 
 		
-	}
+	} */
 }
