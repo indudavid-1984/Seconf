@@ -1,9 +1,9 @@
 package com.indu.indusel.webdriver.util;
 
-/*
- * Bean representing a browser. It contains name, version and platform fields.
+
+ /* Bean representing a browser. It contains name, version and platform fields.
  * 
- * @author Sebastiano Armeli-Battana
+ * @author Indu David
  */
 public class Browser {
 

@@ -15,7 +15,7 @@ public class EmiratesHotelPage extends WebDriverWrapper{
 	
 	public EmiratesHotelPage(WebDriver driver){
 		
-		super(driver);
+		super(driver);//driver
 	}
 	
 	

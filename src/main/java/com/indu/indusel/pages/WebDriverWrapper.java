@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.base.Function;
 //import com.sun.istack.NotNull;
-//import com.tomtom.qa.selenium.framework.EnvironmentProperties;
+
 
 /**
  * Wraps important operations of {@link WebDriver}. Inherited by Page objects.

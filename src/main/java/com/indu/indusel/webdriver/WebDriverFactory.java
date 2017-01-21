@@ -105,11 +105,10 @@ public class WebDriverFactory {
 		} else if (IPHONE.equals(browserName)) {
 			capability = DesiredCapabilities.iphone();
 		} 
+	
+			
 
-			return webDriver;
-		}
-
-		capability = setVersionAndPlatform(capability, browser.getVersion(),browser.getPlatform());
+		capability =  setVersionAndPlatform(capability, browser.getVersion(),browser.getPlatform());
 
 		// Create Remote WebDriver
 		try {
@@ -117,6 +116,8 @@ public class WebDriverFactory {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
+		
+		
 
 		return webDriver;
 	}
@@ -133,7 +134,8 @@ public class WebDriverFactory {
 	 * @return WebDriver instance
 	 */
 	public static WebDriver getInstance(String browser, String username,
-			String password) {
+			String password) 
+	{
 
 		WebDriver webDriver = null;
 
@@ -171,11 +173,13 @@ public class WebDriverFactory {
       webDriver = new RemoteWebDriver(DesiredCapabilities.android());
 
     } 
+	
 		
 
 		return webDriver;
 	}
-
+	
+	
 	/*
 	 * Helper method to set version and platform for a specific browser
 	 * 
