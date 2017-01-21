@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Tests]" data-provider-thread-count="1">
+  <parameter name="path" value="/"/>
+  <test name="Test1(failed)">
+    <parameter name="path" value="/"/>
+    <groups>
+      <run>
+        <include name="System Test"/>
+        <exclude name="functional"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="org.tests.pages.HomePageTest">
+        <methods>
+          <include name="init"/>
+          <include name="testH1"/>
+          <include name="testH2"/>
+        </methods>
+      </class> <!-- org.tests.pages.HomePageTest -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+</suite> <!-- Failed suite [Tests] -->

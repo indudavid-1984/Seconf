@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="5" name="Failed suite [Tests]" data-provider-thread-count="1">
+  <parameter name="path" value="/"/>
+  <test name="Test1(failed)">
+    <groups>
+      <run>
+        <include name="System Test"/>
+        <include name="End to end"/>
+        <exclude name="Smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="org.tests.pages.GmailAttachTest">
+        <methods>
+          <include name="init"/>
+          <include name="testInit"/>
+          <include name="gmailTest"/>
+        </methods>
+      </class> <!-- org.tests.pages.GmailAttachTest -->
+      <class name="org.tests.pages.PartnersPageTest">
+        <methods>
+          <include name="ShareTest"/>
+        </methods>
+      </class> <!-- org.tests.pages.PartnersPageTest -->
+      <class name="org.tests.pages.ClinicalConductorPageTest">
+        <methods>
+          <include name="CCTest"/>
+          <include name="init"/>
+        </methods>
+      </class> <!-- org.tests.pages.ClinicalConductorPageTest -->
+      <class name="org.tests.pages.ProductEditionsTest">
+        <methods>
+          <include name="BundledFeaturesTest"/>
+          <include name="init"/>
+          <include name="PETest"/>
+          <include name="LinkTest"/>
+          <include name="ColumnsTest"/>
+        </methods>
+      </class> <!-- org.tests.pages.ProductEditionsTest -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+</suite> <!-- Failed suite [Tests] -->

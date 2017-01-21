@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <parameter name="path" value="/"/>
+  <test name="Default test(failed)">
+    <classes>
+      <class name="org.tests.pages.GmailAttachTest">
+        <methods>
+          <include name="init"/>
+          <include name="testInit"/>
+          <include name="gmailTest"/>
+        </methods>
+      </class> <!-- org.tests.pages.GmailAttachTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
