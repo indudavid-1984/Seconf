@@ -10,11 +10,14 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.ScreenshotException;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.indu.indusel.webdriver.util.PropertyLoader;
 import com.indu.indusel.webdriver.util.Browser;
@@ -56,8 +59,18 @@ public class TestBase{
 		webDriver = WebDriverFactory.getInstance(gridHubUrl, browser, username,
 				password);
 		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
 	}
 
+	@Test
+	public void baseTest (){
+		
+		System.out.println("in base test");
+	
+		Assert.assertTrue(EmiratesHomepage.QuestionVisible());
+	
+	}
+	
 	/*@AfterSuite(alwaysRun = true)
 	public void tearDown() {
 		if (webDriver != null) {

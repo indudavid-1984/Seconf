@@ -18,19 +18,35 @@ public class EmiratesHomepageTest extends TestBase{
 		webDriver.get(websiteUrl + path);
 		EmiratesHomepage= PageFactory.initElements(webDriver, EmiratesHomepage.class);
 		FeaturedPages = PageFactory.initElements(webDriver, FeaturedPages.class);
-		
+		webDriver.manage().window().maximize();
 	}
 
 	@Test
 	public void testFP() throws InterruptedException {
+	
 		EmiratesHomepage.FPhover();
-		
+		/*	EmiratesHomepage.ClickManage(browser.getName());
 		FeaturedPages.FromSelect();
 		String S1= FeaturedPages.ToEnter();
 		String S2 = FeaturedPages.clickSearch();
 		
 		Assert.assertEquals(S1,S2);
-	}
+	}  */
 
+
+}
+	@Test
+	public void testImages() throws InterruptedException {
 	
-	}
+		Assert.assertNull(EmiratesHomepage.isImageVisible(browser.getName()));
+		/*	EmiratesHomepage.ClickManage(browser.getName());
+		FeaturedPages.FromSelect();
+		String S1= FeaturedPages.ToEnter();
+		String S2 = FeaturedPages.clickSearch();
+		
+		Assert.assertEquals(S1,S2);
+	}  */
+
+}
+}
+	

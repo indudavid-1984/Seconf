@@ -76,6 +76,7 @@ public class WebDriverFactory {
 		if (CHROME.equals(browserName)) {
 			capability = DesiredCapabilities.chrome();
 		} else if (FIREFOX.equals(browserName)) {
+			System.setProperty("webdriver.gecko.driver","C:\\Users\\m1013143\\Downloads\\geckodriver");
 			capability = DesiredCapabilities.firefox();
 			
 			FirefoxProfile ffProfile = new FirefoxProfile();

@@ -19,7 +19,7 @@ public class EmiratesHotelPage extends WebDriverWrapper{
 	}
 	
 	
-	private final String Dest ="//*[tokenize(@class,'\s+')='$classname']";// "//*[matches(@id, '^autoC\d+$')]"; // "//*[@id='autoComplete']";
+	private final String Dest = "//*[@id='autoComplete']";//"//*[tokenize(@class,'\s+')='$classname']";// "//*[matches(@id, '^autoC\d+$')]"; // 
 	
 private final String Destlist = "//ul[@class = 'dropdown-menu airport-listbox ng-isolate-scope']/li";
 

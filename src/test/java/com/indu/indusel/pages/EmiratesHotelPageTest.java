@@ -28,7 +28,7 @@ public class EmiratesHotelPageTest extends TestBase{
 		
 	}
 
-	@Test
+	/*@Test
 	public void testHotelBook() throws InterruptedException {
 		EmiratesHotelPage.selectDest();
 		EmiratesHotelPage.SelectCheckin(1, 2);
@@ -50,6 +50,6 @@ public class EmiratesHotelPageTest extends TestBase{
 	
 
 	
-	}
+	} */
 	
 }
