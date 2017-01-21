@@ -17,7 +17,7 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import com.opera.core.systems.OperaDriver;
 import com.indu.indusel.webdriver.util.Browser;
-import com.indu.indusel.webdriver.AuthenticatedHtmlUnitDriver;
+
 
 /*
  * Factory to instantiate a WebDriver object. It returns an instance of the driver (local invocation) or an instance of RemoteWebDriver
@@ -104,16 +104,7 @@ public class WebDriverFactory {
 			capability = DesiredCapabilities.android();
 		} else if (IPHONE.equals(browserName)) {
 			capability = DesiredCapabilities.iphone();
-		} else {
-
-			capability = DesiredCapabilities.htmlUnit();
-			// HTMLunit Check
-			if (username != null && password != null) {
-				webDriver = (HtmlUnitDriver) AuthenticatedHtmlUnitDriver
-						.create(username, password);
-			} else {
-				webDriver = new HtmlUnitDriver(true);
-			}
+		} 
 
 			return webDriver;
 		}
@@ -180,16 +171,8 @@ public class WebDriverFactory {
     } else if (ANDROID.equals(browser)) {
       webDriver = new RemoteWebDriver(DesiredCapabilities.android());
 
-    } else {
-
-			// HTMLunit Check
-			if (username != null && password != null) {
-				webDriver = (HtmlUnitDriver) AuthenticatedHtmlUnitDriver
-						.create(username, password);
-			} else {
-				webDriver = new HtmlUnitDriver(true);
-			}
-		}
+    } 
+		
 
 		return webDriver;
 	}
