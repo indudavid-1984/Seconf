@@ -109,8 +109,7 @@ public class WebDriverFactory {
 			return webDriver;
 		}
 
-		capability = setVersionAndPlatform(capability, browser.getVersion(),
-				browser.getPlatform());
+		capability = setVersionAndPlatform(capability, browser.getVersion(),browser.getPlatform());
 
 		// Create Remote WebDriver
 		try {
