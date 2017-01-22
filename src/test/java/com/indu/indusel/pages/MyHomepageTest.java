@@ -7,8 +7,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class EmiratesHomepageTest extends TestBase{
-	EmiratesHomepage EmiratesHomepage;
+public class MyHomepageTest extends TestBase{
+	MyHomepage MyHomepage;
 	FeaturedPages FeaturedPages ;
 	@Parameters({ "path" })
 	@BeforeMethod
@@ -16,16 +16,28 @@ public class EmiratesHomepageTest extends TestBase{
 
 		// Load the page in the browser
 		webDriver.get(websiteUrl + path);
-		EmiratesHomepage= PageFactory.initElements(webDriver, EmiratesHomepage.class);
+		MyHomepage= PageFactory.initElements(webDriver, MyHomepage.class);
 		FeaturedPages = PageFactory.initElements(webDriver, FeaturedPages.class);
 		webDriver.manage().window().maximize();
 	}
+	
+	/*
+	 * This test uses findElement method implemented in WebDriverWrapper class which helps in keeping 
+	 * implicit and explicit wait separate.
+	 */
+	@Test
+	public void testTimeouts() throws InterruptedException {
+		Boolean val = MyHomepage.explicitFind();
+		Assert.assertTrue(val);
+		
+	}
+	
 
 	@Test
 	public void testFP() throws InterruptedException {
 	
-		EmiratesHomepage.FPhover();
-		/*	EmiratesHomepage.ClickManage(browser.getName());
+		MyHomepage.FPhover();
+		/*	MyHomepage.ClickManage(browser.getName());
 		FeaturedPages.FromSelect();
 		String S1= FeaturedPages.ToEnter();
 		String S2 = FeaturedPages.clickSearch();
@@ -38,8 +50,8 @@ public class EmiratesHomepageTest extends TestBase{
 	@Test
 	public void testImages() throws InterruptedException {
 	
-		Assert.assertNull(EmiratesHomepage.isImageVisible(browser.getName()));
-		/*	EmiratesHomepage.ClickManage(browser.getName());
+		Assert.assertNull(MyHomepage.isImageVisible(browser.getName()));
+		/*	MyHomepage.ClickManage(browser.getName());
 		FeaturedPages.FromSelect();
 		String S1= FeaturedPages.ToEnter();
 		String S2 = FeaturedPages.clickSearch();

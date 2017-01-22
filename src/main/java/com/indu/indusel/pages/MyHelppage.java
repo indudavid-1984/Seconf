@@ -10,9 +10,9 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class EmiratesHelppage extends WebDriverWrapper{
+public class MyHelppage extends WebDriverWrapper{
 	
-	public EmiratesHelppage(WebDriver driver){
+	public MyHelppage(WebDriver driver){
 		
 		super(driver);
 	}

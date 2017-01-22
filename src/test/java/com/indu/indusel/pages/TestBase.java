@@ -67,7 +67,7 @@ public class TestBase{
 		
 		System.out.println("in base test");
 	
-		Assert.assertTrue(EmiratesHomepage.QuestionVisible());
+		Assert.assertTrue(MyHomepage.QuestionVisible());
 	
 	}
 	

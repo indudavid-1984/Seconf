@@ -9,8 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class EmiratesHelppageTest extends TestBase{
-	EmiratesHelppage EmiratesHelppage;
+public class MyHelppageTest extends TestBase{
+	MyHelppage EmiratesHelppage;
 
 	//@Parameters({ "path" })
 	@BeforeMethod
@@ -18,7 +18,7 @@ public class EmiratesHelppageTest extends TestBase{
 
 		// Load the page in the browser
 		webDriver.get("https://www.emirates.com/in/english/help/faqs/faqs.aspx");
-		EmiratesHelppage= PageFactory.initElements(webDriver, EmiratesHelppage.class);
+		EmiratesHelppage= PageFactory.initElements(webDriver, MyHelppage.class);
 		
 		
 	}
