@@ -8,28 +8,29 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-public class MyHelppageTest extends TestBase{
-	MyHelppage EmiratesHelppage;
+/*
+ *Tests for MyHelpPage included here.
+ *@author Indu David 
+ */
+public class MyHelpPageTest extends TestBase{
+	MyHelppage myHelppage;
 
 	//@Parameters({ "path" })
 	@BeforeMethod
 	public void testInit() {
-
-		// Load the page in the browser
-		webDriver.get("https://www.emirates.com/in/english/help/faqs/faqs.aspx");
-		EmiratesHelppage= PageFactory.initElements(webDriver, MyHelppage.class);
-		
-		
+        // Load the page in the browser
+		webDriver.get("https://url.com");
+		myHelppage= PageFactory.initElements(webDriver, MyHelppage.class);
 	}
-
+    
+	/*
+	 * Test to check all links in the page
+	 */
 	@Test
 	public void testLinks() throws InterruptedException {
-		List <String> s = EmiratesHelppage.checkLinks();
-		
-		
+		List <String> s = myHelppage.checkLinks();
 		Assert.assertNull(s);
 	}
 
 	
-	}
+}

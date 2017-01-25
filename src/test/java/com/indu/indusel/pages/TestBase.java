@@ -25,61 +25,49 @@ import com.indu.indusel.webdriver.WebDriverFactory;
 
 /*
  * Base class for all the test classes
- * 
- * @author Sebastiano Armeli-Battana
  */
-
 public class TestBase{
 	private static final String SCREENSHOT_FOLDER = "target/screenshots/";
 	private static final String SCREENSHOT_FORMAT = ".png";
 
 	protected WebDriver webDriver;
-
 	protected String gridHubUrl;
-
 	protected String websiteUrl;
-
 	protected Browser browser;
 
 	@BeforeMethod
 	public void init() {
-		System.out.println("inside init");
 		websiteUrl = PropertyLoader.loadProperty("site.url");
-		System.out.println("site url");
 		gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
-
-		browser = new Browser();
+    	browser = new Browser();
 		browser.setName(PropertyLoader.loadProperty("browser.name"));
 		browser.setVersion(PropertyLoader.loadProperty("browser.version"));
 		browser.setPlatform(PropertyLoader.loadProperty("browser.platform"));
-
 		String username = PropertyLoader.loadProperty("user.username");
 		String password = PropertyLoader.loadProperty("user.password");
-		
 		webDriver = WebDriverFactory.getInstance(gridHubUrl, browser, username,
 				password);
 		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		
-	}
-
+    }
+    
+	/*
+	 * This test is common to all pages and will be run from a static context
+	 */
 	@Test
 	public void baseTest (){
 		
-		System.out.println("in base test");
-	
-		Assert.assertTrue(MyHomepage.QuestionVisible());
-	
+	    Assert.assertTrue(MyHomePage.QuestionVisible());
 	}
 	
-	/*@AfterSuite(alwaysRun = true)
+	@AfterSuite(alwaysRun = true)
 	public void tearDown() {
 		if (webDriver != null) {
 			webDriver.quit();
 		}
-	}*/
+	}
 
-  @AfterMethod
-  public void setScreenshot(ITestResult result) {
+	@AfterMethod
+    public void setScreenshot(ITestResult result) {
     if (!result.isSuccess()) {
       try {
         WebDriver returned = new Augmenter().augment(webDriver);

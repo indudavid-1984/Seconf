@@ -11,9 +11,11 @@ import org.openqa.selenium.support.How;
 
 /*
  * Page class modeling features common across pages.
+ * 
+ * @author Indu David
  */
-public class commonFeaturePage extends WebDriverWrapper{
-	public commonFeaturePage(WebDriver driver){
+public class CommonFeaturePage extends WebDriverWrapper{
+	public CommonFeaturePage(WebDriver driver){
 		super(driver);
 	}
 	
@@ -26,23 +28,13 @@ public class commonFeaturePage extends WebDriverWrapper{
 	
 	@FindBy(how = How.CLASS_NAME, using = "qubit-VisitorPulse-questionName")
 	@CacheLookup
-	private List<WebElement> Score;
+	private List<WebElement> score;
 	
 	/*
-	 * Method modeling the common feature 'user feedback'
+	 * Method modeling the common feature 'user feedback'. This user feedback component appears in all
+	 * the pages.
 	 */
 	public static boolean QuestionVisible(){
-		
-		//waitElementTextToBeExpected(question, "How would you rate your satisfaction with this website? ");
-		System.out.println(question.getText());
-		return (question.getText().equalsIgnoreCase("How would you rate your satisfaction with this website?"));	
+	   return (question.getText().equalsIgnoreCase("How would you rate your satisfaction with this website?"));	
 	}
-	
-	/*
-	 * Method modeling the score.
-	 */
-	public int Scores(){
-		return (Score.size());
-	}
-	
 }

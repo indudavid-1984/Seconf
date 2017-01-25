@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -21,8 +20,6 @@ import com.indu.indusel.webdriver.util.Browser;
 
 /*
  * Factory to instantiate a WebDriver object. It returns an instance of the driver (local invocation) or an instance of RemoteWebDriver
- * 
- * @author Sebastiano Armeli-Battana
  */
 public class WebDriverFactory {
 
@@ -76,7 +73,7 @@ public class WebDriverFactory {
 		if (CHROME.equals(browserName)) {
 			capability = DesiredCapabilities.chrome();
 		} else if (FIREFOX.equals(browserName)) {
-			System.setProperty("webdriver.gecko.driver","C:\\Users\\m1013143\\Downloads\\geckodriver");
+			System.setProperty("webdriver.gecko.driver","\\geckodriver");
 			capability = DesiredCapabilities.firefox();
 			
 			FirefoxProfile ffProfile = new FirefoxProfile();
@@ -106,8 +103,6 @@ public class WebDriverFactory {
 			capability = DesiredCapabilities.iphone();
 		} 
 	
-			
-
 		capability =  setVersionAndPlatform(capability, browser.getVersion(),browser.getPlatform());
 
 		// Create Remote WebDriver
@@ -116,9 +111,7 @@ public class WebDriverFactory {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
-		
-
+	
 		return webDriver;
 	}
 
@@ -159,23 +152,7 @@ public class WebDriverFactory {
             isSupportedPlatform(browser);
 			webDriver = new InternetExplorerDriver();
 
-		} else if (OPERA.equals(browser)) {
-			webDriver = new OperaDriver();
-
-        } else if (SAFARI.equals(browser)) {
-            isSupportedPlatform(browser);
-            webDriver = new SafariDriver();
-
-    } else if (IPHONE.equals(browser)) {
-      webDriver = new RemoteWebDriver(DesiredCapabilities.iphone());
-      
-    } else if (ANDROID.equals(browser)) {
-      webDriver = new RemoteWebDriver(DesiredCapabilities.android());
-
-    } 
-	
-		
-
+		}
 		return webDriver;
 	}
 	
@@ -217,7 +194,7 @@ public class WebDriverFactory {
 	}
 
 	/*
-	 * Helper method to set ChromeDriver location into the right ststem property
+	 * Helper method to set ChromeDriver location into the right system property
 	 */
 	private static void setChromeDriver() {
 		String os = System.getProperty("os.name").toLowerCase().substring(0, 3);
@@ -234,6 +211,6 @@ public class WebDriverFactory {
         } else if (SAFARI.equals(browser)) {
             is_supported = Platform.MAC.is(current) || Platform.WINDOWS.is(current);
         }
-       // assert is_supported : "Platform is not supported by " + browser.toUpperCase() + " browser";
+       
     }
 }

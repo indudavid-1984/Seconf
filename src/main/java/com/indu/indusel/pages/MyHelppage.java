@@ -9,14 +9,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
-public class MyHelppage extends WebDriverWrapper{
-	
+/*
+ * This class models the services offered by MyHelppage.
+ * @author Indu David
+ */
+public class MyHelppage extends WebDriverWrapper{	
 	public MyHelppage(WebDriver driver){
-		
 		super(driver);
 	}
-	
 	
 	private final String links = "//*[@id='column1']/div/div/ul/li";
 	
@@ -24,43 +24,21 @@ public class MyHelppage extends WebDriverWrapper{
 	@CacheLookup
 	private List<WebElement> links1;
 	
-	public List<String> checkLinks()
-	{ int t;
-	List <String> s  = new ArrayList<String>();
-	String href1 = links1.get(0).findElement(By.tagName("a")).getAttribute("href");
-		
-		for( WebElement i : links1){
-						String href = i.findElement(By.tagName("a")).getAttribute("href");
-
-			System.out.println("string i"+ href);
-			i.findElement(By.tagName("a")).click(); //i.click();
-			System.out.println("clicked on i");
-			String title = getDriver().getCurrentUrl();//.replace("https://www.emirates.com","");
-			System.out.println("after clicking get title" + title);
-			if (!title.equalsIgnoreCase(href))
-			{ 
-			  s.add(href);
-			}
-			
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			getDriver().navigate().to(href1);
-			
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-			return s;
-		}
+	public List<String> checkLinks(){ 
+	   int t;
+	   List <String> s  = new ArrayList<String>();
+	   String href1 = links1.get(0).findElement(By.tagName("a")).getAttribute("href");
+	   for( WebElement i : links1){
+		   String href = i.findElement(By.tagName("a")).getAttribute("href");
+		   i.findElement(By.tagName("a")).click(); 
+		   String title = getDriver().getCurrentUrl();
+		   if (!title.equalsIgnoreCase(href)){ 
+		   s.add(href);
+	   }
+	   getDriver().navigate().to(href1);
 	}
+	return s;
+    }
+}
 
 

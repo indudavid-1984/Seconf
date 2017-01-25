@@ -6,10 +6,7 @@
 	<test name="Test1">
 		<parameter name="path" value="/"/>
 		<classes>
-		    <class name="com.indu.indusel.pages.EmiratesHomepageTest"/>
-		
-		    
-		    
+		    <class name="com.indu.indusel.pages.MyHomepageTest"/> 
 		</classes>
 	</test>  
 </suite>

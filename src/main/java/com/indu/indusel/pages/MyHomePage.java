@@ -26,124 +26,116 @@ import com.indu.indusel.webdriver.util.Browser;
 import com.indu.indusel.webdriver.util.PropertyLoader;
 import com.indu.indusel.pages.WebDriverWrapper;
 
-
-
-public class MyHomepage extends commonFeaturePage {
-	
-	
-
-
-
-	public MyHomepage(WebDriver webDriver){
-		super(webDriver);
-	}
-	
-	private final String FP = "Featured fares"; //Featured pages 
-	
-	
- @FindBy(how = How.XPATH, using = "//*[matches(@id,'featuredFare')]/a/span[1]")////*[matches(@id, 'sometext\d+_text')]
- private WebElement FP1;
- 
- @FindBy(how = How.ID, using="Browse our fares-link-label")
- private WebElement SearchFlight;
- 
- @FindBy(how = How.TAG_NAME, using="img")
- private List<WebElement> images;
- 
 /*
- *  Method to demonstrate usage of findElement method implemented in WebDriverWrapper class to avoid mixing
- *  implicit and explicit wait.
+ * Page class modeling the services offered by Homepage
  */
-public boolean explicitFind() {
+public class MyHomePage extends CommonFeaturePage {
+   public MyHomePage(WebDriver webDriver){
+      super(webDriver);
+      }
+
+   private final String FP = "Featured fares"; //Featured pages 
 	
-	if((findElement(getDriver(), By.id("Submit"), 5000))!=null){
+   @FindBy(how = How.XPATH, using = "//*[matches(@id,'featuredFare')]/a/span[1]")////*[matches(@id, 'sometext\d+_text')]
+   private WebElement FP1;
+ 
+   @FindBy(how = How.ID, using="Browse our fares-link-label")
+   private WebElement searchFlight;
+ 
+   @FindBy(how = How.TAG_NAME, using="img")
+   private List<WebElement> images;
+ 
+   /*
+    *  Method to demonstrate usage of findElement method implemented in WebDriverWrapper class to avoid mixing
+    *  implicit and explicit wait.
+    */
+   public boolean explicitFind() {
+		if((findElement(getDriver(), By.id("Submit"), 5000))!=null){
 		return true;
-	} else 
+	    } else 
 		return false;
-}
+   }
+  
+   /*
+    * Method to demonstrate Using Separate locator repository
+    */
+   public void clickManage1( String Browser){
+      String manage = PropertyLoader.loadProperty(Browser+".manage");
+      WebElement manageElt = getDriver().findElement(By.id(manage));
+      manageElt.click();
+   }
  
- 
- 
- public void ClickManage( String Browser){
- 
-	 
-	 
-String Manage = PropertyLoader.loadProperty(Browser+".manage");
- 
- WebElement manage = getDriver().findElement(By.id(Manage));
- 
- manage.click();
- }
- 
-
-
- 
- 
- 
- public void FPhover(){
-	 
-	 
-	 
-	 Actions a = new Actions(getDriver());
-	 File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-	// Now you can do whatever you need to do with it, for example copy somewhere
-	try {
-		FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
-	} catch (IOException e) {
+   /*
+    * Method to demonstrate Using Browser specific code
+    */
+   public void clickManage2( String Browser){
+      WebElement manage;
+	  if(Browser.equalsIgnoreCase("ie")){
+	     manage= getDriver().findElement(By.id("trips3"));
+	  } else {
+		manage = getDriver().findElement(By.id("trips")); 
+	  }
+      manage.click();
+   }
+  
+    /*
+	 * The FPhover method  uses jquery-xpath2.0 plugin to make use of regex in xpath
+	 */ 
+   public String FPhover(){
+      Actions a = new Actions(getDriver());
+      
+      //Taking screenshot for debugging
+	  File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
+	  try {
+	     FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+	  } catch (IOException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	String fileContents;
-	try {
+	  e.printStackTrace();
+	  }
+	  
+	  //Applying the jquery xpath 2.0 plugin using JavascriptExecutor
+	  String fileContents;
+	  try {
 		fileContents = Files.toString(new File("C:\\Users\\m1013143\\Downloads\\jquery-xpath-master\\jquery.xpath.js"), Charsets.UTF_8);
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();     
-		
 		js.executeScript(fileContents);
-	} catch (IOException e) {
+	  } catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	  }
+      
+	  //xpath is built using String s by using regex. 
+	  JavascriptExecutor js = (JavascriptExecutor)getDriver(); 
+	  String s= "\"//*[matches(@id,'featuredFare')]/a/span[1]\"";
+	  String script = "return $(document).xpath("+s+").get(0)";
+	  //WebElement is found using JavascriptExecutor using the xpath having regex
+	  WebElement FP2= (WebElement)js.executeScript(script);
+	  a.moveToElement(FP2).build().perform();
+	  searchFlight.click();
+	  return (getDriver().getTitle());
+      }
 
-	
-	JavascriptExecutor js = (JavascriptExecutor)getDriver(); 
-	 String s= "\"//*[matches(@id,'featuredFare')]/a/span[1]\"";
-	String script = "return $(document).xpath("+s+").get(0)";
-		
-	WebElement FP2= (WebElement)js.executeScript(script);
-			
-	a.moveToElement(FP2).build().perform();
-	 SearchFlight.click();
- }
- 
- public String[] isImageVisible( String browser){
-	 String []a = null;
-	 int i=0;
-	 for( WebElement image: images)
-	 { 
-		 
-	 Boolean result = null;
-	 if(browser.equalsIgnoreCase("ie")){
-	 result = (Boolean) ((JavascriptExecutor)getDriver()).executeScript("return arguments[0].complete;", image);
-	 }else{ //other browser types use diff method to check
-	 result = (Boolean) ((JavascriptExecutor)getDriver()).executeScript("return (typeof arguments[0].naturalWidth!=\"undefined\" && arguments[0].naturalWidth>0);", image);
-	 }
-	 if (result.booleanValue())
-	 {
-		 
-		
-		//a[i]= image.getAttribute("src");
-		//System.out.println(a[i] + "link"+ i);
-		 System.out.println(image.getAttribute("src"));
-		i++;
-		
-	 }
-	 }
-	 return a;
-	 }
-
-
-
- }
+   /*
+	* The isImageVisible method in MyHomepage class uses javascript to check if the image is actually rendered.
+	*/
+   public String[] isImageVisible( String browser){
+      String []a = null;
+	  int i=0;
+	  for( WebElement image: images){ 
+	     Boolean result = null;
+	     if(browser.equalsIgnoreCase("ie")){
+	        result = (Boolean) ((JavascriptExecutor)getDriver()).executeScript("return arguments[0].complete;", image);
+	     }else{ 
+	    	//other browser types use different method to check
+	        result = (Boolean) ((JavascriptExecutor)getDriver()).executeScript("return (typeof arguments[0].naturalWidth!=\"undefined\" && arguments[0].naturalWidth>0);", image);
+	     }
+	     if (result.booleanValue()) {
+	     System.out.println(image.getAttribute("src"));
+		 i++;
+	     }
+      }
+	  return a;
+   }
+}
 
  
